@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lox/ui/profile.dart';
@@ -21,7 +23,14 @@ class Search extends StatelessWidget {
                       fit: BoxFit.cover,
                       height: 300.h,
                     ),
-                    Text('Hire a nurse'),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                            left: 16.0, bottom: 8, top: 8),
+                        child: Text('Hire a nurse',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                            ))),
                     SizedBox(
                       height: 500,
                       child: ListView.builder(
@@ -54,7 +63,7 @@ class Search extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
                                 'Gbagada',

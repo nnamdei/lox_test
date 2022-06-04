@@ -36,8 +36,8 @@ class AppointmentSuccess extends StatelessWidget {
                         ),
                         Center(
                           child: CircleAvatar(
-                            backgroundColor: Colors.green,
-                            radius: 30,
+                            backgroundColor: AppColors.color6,
+                            radius: 40,
                             child: Icon(
                               Icons.done_outlined,
                               color: AppColors.white,

@@ -28,7 +28,7 @@ class _NavState extends State<Nav> {
       backgroundColor: AppColors.white,
       body: IndexedStack(index: _currentIndex, children: _children),
       bottomNavigationBar: BottomNavigationBar(
-        // selectedItemColor: AppColors.primary,
+        selectedItemColor: AppColors.color2,
         unselectedItemColor: Colors.grey,
 
         selectedLabelStyle: const TextStyle(

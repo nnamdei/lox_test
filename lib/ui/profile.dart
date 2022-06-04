@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lox/ui/appointment/appointment.dart';
 import 'package:lox/utils/colors.dart';
 
 class Profile extends StatelessWidget {
@@ -11,33 +12,45 @@ class Profile extends StatelessWidget {
         designSize: const Size(360, 690),
         builder: (context, child) => Scaffold(
               bottomNavigationBar: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 48,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(16)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Icon(
-                      Icons.calendar_month,
-                      color: Colors.white,
-                      size: 16,
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    Text('Make an appointment',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.normal)),
-                  ]),
+                padding: const EdgeInsets.only(bottom: 16.0, right: 8, left: 8),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AppointmentPage()));
+                  },
+                  child: Container(
+                    height: 48,
+                    decoration: BoxDecoration(
+                        color: AppColors.color2,
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Text('Make an appointment',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal)),
+                        ]),
+                  ),
                 ),
               ),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: SizedBox(
@@ -61,61 +74,166 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10.w,),
-                          Text('Profile'),
+                          SizedBox(
+                            width: 50.w,
+                          ),
+                          Text(
+                            'Profile',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
                           const Spacer(),
                           Icon(
                             Icons.mail_outline_sharp,
-                            color: Colors.blue,
+                            color: AppColors.color2,
                           )
                         ],
                       )),
                     ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left:16.0),
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12)),
                           child: Row(children: [
-                        Image.asset('name'),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Seun Olumide'),
-                            Text('Nurse'),
-                            Row(
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Image.asset(
+                              'name',
+                              height: 48,
+                              width: 48,
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.people_outlined),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [Text('Patients'), Text('345+')],
+                                Text(
+                                  'Seun Olumide',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Nurse',
+                                  style: TextStyle(
+                                      fontSize: 8,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.people_outlined,
+                                      color: AppColors.color2,
+                                      size: 16,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Patients',
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 8,
+                                              fontWeight: FontWeight.normal,
+                                            )),
+                                        Text(
+                                          '345+',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 8,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                            )
+                          ])),
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '275',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Articles',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal),
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '234',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Following',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal),
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '123',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Followers',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal),
                                 )
                               ],
                             )
                           ],
-                        )
-                      ])),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left:16.0, right: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Text('275'), Text('Articlles')],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Text('234'), Text('Following')],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Text('123'), Text('Followers')],
-                          )
-                        ],
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 16.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
@@ -125,7 +243,7 @@ class Profile extends StatelessWidget {
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Colors.blue),
+                                color: AppColors.color2),
                             height: 32,
                             width: 150,
                             child: Center(
@@ -137,20 +255,22 @@ class Profile extends StatelessWidget {
                               ),
                             )),
                           ),
-                          Spacer(),
+                          SizedBox(
+                            width: 16.w,
+                          ),
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Colors.white,
-                                border:
-                                    Border.all(width: 1, color: Colors.blue)),
+                                border: Border.all(
+                                    width: 1, color: AppColors.color2)),
                             height: 32,
                             width: 150,
                             child: Center(
                                 child: Text(
                               'Message',
                               style: TextStyle(
-                                color: Colors.blue,
+                                color: AppColors.color2,
                                 fontSize: 12,
                               ),
                             )),
@@ -158,36 +278,69 @@ class Profile extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 24.h,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 16.0,right: 16),
-                      child: SizedBox(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12)),
                         child: Row(
                           children: [
                             Container(
-                              child: Center(child: Icon(Icons.star)),
+                              height: 32,
+                              width: 32,
+                              color: AppColors.color4,
+                              child: Center(
+                                  child: Icon(
+                                Icons.star,
+                                color: AppColors.color3,
+                              )),
+                            ),
+                            SizedBox(
+                              width: 10.w,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [Text('Rating'), Text('4.78 out of 5')],
+                              children: [
+                                Text(
+                                  'Rating',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                                Text(
+                                  '4.78 out of 5',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
                             ),
-Spacer(),
+                            Spacer(),
                             Container(
                               width: 100,
                               height: 24,
                               decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: AppColors.color2,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
-                                mainAxisAlignment:MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     'See all',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.white,
+                                        fontSize: 12),
                                   ),
                                   Icon(
                                     Icons.arrow_forward_ios_sharp,
-                                    size: 12,
+                                    size: 8,
                                     color: Colors.white,
                                   )
                                 ],
@@ -197,32 +350,67 @@ Spacer(),
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left:16.0,right: 16),
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
+                      child: Divider(
+                        color: Colors.grey[100],
+                        height: 0.1,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    ListTile(
+                        leading: CircleAvatar(
+                            radius: 8,
+                            child: Icon(
+                              Icons.question_mark,
+                              size: 10,
+                            )),
+                        title: Text(
+                          'Anonymous feedback',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w500),
+                        ),
+                        subtitle: Text(
+                          'Very competent specialist. i am very happy\nthat there are such professional doctors. My\nbaby is unsafe hands. My child\'s health is\nabove all',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal),
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Divider(
                         color: Colors.grey,
                         height: 0.1,
                       ),
                     ),
-                    ListTile(
-                        leading: CircleAvatar(
-                            radius: 16, child: Icon(Icons.question_mark)),
-                        title: Text('Anonymous feedback'),
-                        subtitle: Text(
-                            'Very competent specialist. i am very happy\nthat there are such professional doctors. My\nbaby is unsafe hands. My child\'s health is\nabove all')),
-                    Padding(
-                      padding: const EdgeInsets.only(left:16.0,right: 16),
-                      child: Divider(
-                        color: Colors.grey,
-                        height: 0.2,
-                      ),
+                    SizedBox(
+                      height: 16.h,
                     ),
                     ListTile(
                         leading: CircleAvatar(
-                            radius: 16, child: Icon(Icons.question_mark)),
-                        title: Text('Erika Lhee'),
+                            radius: 8,
+                            child: Icon(
+                              Icons.question_mark,
+                              size: 10,
+                            )),
+                        title: Text(
+                          'Erika Lhee',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w500),
+                        ),
                         subtitle: Text(
-                            'Just a wonderful doctor very happy that she\nis leading our child, competent, very smart, nice'))
+                          'Just a wonderful doctor very happy that she\nis leading our child, competent, very smart, nice',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ))
                   ],
                 ),
               ),

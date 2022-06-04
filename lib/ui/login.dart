@@ -3,7 +3,27 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lox/ui/register.dart';
+import 'package:lox/utils/colors.dart';
 import 'package:lox/widgets/nav.dart';
+
+class DrawTriangle extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var path = Path();
+
+    path.moveTo(size.width / 2, 0);
+    path.lineTo(0, size.height);
+    path.lineTo(size.height, size.width);
+    path.close();
+
+    canvas.drawPath(path, Paint()..color = Colors.white);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
+  }
+}
 
 class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
@@ -17,25 +37,76 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(360, 690),
-        builder: (context, child) => Scaffold(
-              body: SingleChildScrollView(
+        builder: (context, child) =>Scaffold(
+      backgroundColor: AppColors.color2,
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+          ),
+          Positioned(
+            top: 50,
+            left: 100,
+            right: 100,
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(width: 10.w),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'The Test',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Powered by Lox',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: CustomPaint(
+                size: Size(MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height),
+                painter: DrawTriangle()),
+          ),
+          Positioned(
+            top: 280,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width,
+              color: AppColors.white,
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                        ),
-                        SizedBox(width: 10.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [Text('The Test'), Text('Powered by Lox')],
-                        )
-                      ],
+                    Center(
+                        child: Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
+                    )),
+                    SizedBox(
+                      height: 24.h,
                     ),
-                    Center(child: Text('Login')),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: TextFormField(
@@ -46,6 +117,9 @@ class _LoginState extends State<Login> {
                                 fontSize: 12,
                                 fontWeight: FontWeight.normal)),
                       ),
+                    ),
+                    SizedBox(
+                      height: 24.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
@@ -71,6 +145,9 @@ class _LoginState extends State<Login> {
                             )),
                       ),
                     ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(context,
@@ -92,7 +169,13 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     Center(child: Text('Or continue with')),
+                    SizedBox(
+                      height: 16.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Row(
@@ -110,7 +193,7 @@ class _LoginState extends State<Login> {
                                 Text(
                                   'Google',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.color1,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -130,7 +213,7 @@ class _LoginState extends State<Login> {
                                 Text(
                                   'Facebook',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.color1,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -139,6 +222,9 @@ class _LoginState extends State<Login> {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
                     ),
                     Center(
                       child: GestureDetector(
@@ -160,6 +246,10 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-            ));
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }

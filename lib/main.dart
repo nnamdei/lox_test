@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lox/ui/appointment/appointment.dart';
+import 'package:lox/ui/appointment/appointment_list.dart';
 import 'package:lox/ui/appointment/appointment_success.dart';
 import 'package:lox/ui/login.dart';
 import 'package:lox/ui/onboarding.dart';
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lox App',
+      
       // home: const AppointmentSuccess()
-      home: Onboarding()
+      home: Onboarding(),
     );
   }
 }

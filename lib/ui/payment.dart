@@ -1,6 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lox/ui/appointment/appointment_success.dart';
+import 'package:lox/utils/colors.dart';
 
 class Item {
   const Item(this.name, this.icon);
@@ -19,29 +21,18 @@ class _PaymentState extends State<Payment> {
   Item? selectedUser;
   List<Item> users = <Item>[
     const Item(
-        'Android',
+        'Mastercard',
         Icon(
-          Icons.android,
-          color: const Color(0xFF167F67),
+          Icons.credit_card,
+          color: AppColors.color2,
         )),
     const Item(
-        'Flutter',
+        'Visa Card',
         Icon(
-          Icons.flag,
-          color: const Color(0xFF167F67),
+          Icons.credit_card,
+          color: AppColors.color2,
         )),
-    const Item(
-        'ReactNative',
-        Icon(
-          Icons.format_indent_decrease,
-          color: const Color(0xFF167F67),
-        )),
-    const Item(
-        'iOS',
-        Icon(
-          Icons.mobile_screen_share,
-          color: const Color(0xFF167F67),
-        )),
+
   ];
 
   @override
@@ -75,60 +66,99 @@ class _PaymentState extends State<Payment> {
                       padding: const EdgeInsets.only(left: 16.0),
                       child: Text('Payment method'),
                     ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
-                      child: DropdownButton<Item>(
-                        hint: Row(
-                          children: <Widget>[
-                            Icon(Icons.credit_card),
-                            SizedBox(
-                              width: 10,
+                      child: Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                            color: AppColors.color7,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: DropdownButtonHideUnderline(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: DropdownButton<Item>(
+                              focusColor: AppColors.color7,
+                              isDense: true,
+                              // iconEnabledColor: AppColors.color7,
+                              hint: Row(
+                                children: <Widget>[
+                                  Icon(Icons.credit_card),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    'Credit/Debit card',
+                                    style: TextStyle(
+                                        color: Colors.black54, fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                              value: selectedUser,
+                              isExpanded: true,
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedUser = value;
+                                });
+                              },
+                              items: users.map((Item user) {
+                                return DropdownMenuItem<Item>(
+                                  value: user,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        user.icon,
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          user.name,
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
                             ),
-                            Text(
-                              'Credit card',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ],
+                          ),
                         ),
-                        value: selectedUser,
-                        isExpanded: true,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedUser = value;
-                          });
-                        },
-                        items: users.map((Item user) {
-                          return DropdownMenuItem<Item>(
-                            value: user,
-                            child: Row(
-                              children: <Widget>[
-                                user.icon,
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  user.name,
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              ],
-                            ),
-                          );
-                        }).toList(),
                       ),
+                    ),
+                    SizedBox(
+                      height: 24.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Row(
                         children: [
-                          Text('Order'),
+                          Text(
+                            'Order',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
                           Spacer(),
-                          Icon(Icons.edit),
+                          Icon(
+                            Icons.edit,
+                            size: 12,
+                            color: AppColors.color2,
+                          ),
                           SizedBox(
                             width: 5.w,
                           ),
-                          Text('Edit')
+                          Text('Edit',
+                              style: TextStyle(
+                                  color: AppColors.color2,
+                                  fontWeight: FontWeight.w500)),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
@@ -137,9 +167,15 @@ class _PaymentState extends State<Payment> {
                         children: [Text('Nurse'), Text('Quantity')],
                       ),
                     ),
+                        SizedBox(
+                      height: 10.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Divider(height: 0.2, color: Colors.grey),
+                    ),
+                        SizedBox(
+                      height: 10.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
@@ -149,7 +185,7 @@ class _PaymentState extends State<Payment> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Order'),
+                              Text('Seun Olumide'),
                               Text('\$250'),
                             ],
                           ),
@@ -157,9 +193,15 @@ class _PaymentState extends State<Payment> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Divider(height: 0.2, color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 5.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
@@ -167,6 +209,9 @@ class _PaymentState extends State<Payment> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [Text('Total'), Text('\$280.00')],
                       ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -199,17 +244,26 @@ class _PaymentState extends State<Payment> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 70.h,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
-                      child: Container(
-                        decoration: BoxDecoration(color: Colors.blue),
-                        height: 48,
-                        child: Center(
-                            child: Text(
-                          'PAY',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w500),
-                        )),
+                      child: GestureDetector(
+                        onTap: (){
+                                                  Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => AppointmentSuccess()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(color: AppColors.color2),
+                          height: 48,
+                          child: Center(
+                              child: Text(
+                            'PAY',
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w500),
+                          )),
+                        ),
                       ),
                     )
                   ],
