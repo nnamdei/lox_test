@@ -18,10 +18,10 @@ class Search extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                      'name',
+                      'assets/images/child-care.png',
                       width: double.infinity,
                       fit: BoxFit.cover,
-                      height: 300.h,
+                      height: 200,
                     ),
                     Padding(
                         padding: const EdgeInsets.only(
@@ -34,11 +34,12 @@ class Search extends StatelessWidget {
                     SizedBox(
                       height: 500,
                       child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: 6,
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => Profile()));

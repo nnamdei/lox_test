@@ -45,7 +45,7 @@ class _PaymentState extends State<Payment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 10.h,
+                      height: 24.h,
                     ),
                     GestureDetector(
                         onTap: () {
@@ -251,7 +251,7 @@ class _PaymentState extends State<Payment> {
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: GestureDetector(
                         onTap: (){
-                                                  Navigator.pushReplacement(context,
+                                                  Navigator.push(context,
                             MaterialPageRoute(builder: (context) => AppointmentSuccess()));
                         },
                         child: Container(

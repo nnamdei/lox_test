@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lox/ui/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Onboarding extends StatelessWidget {
+class Onboarding extends StatefulWidget {
+
+
   const Onboarding({Key? key}) : super(key: key);
+
+  @override
+  State<Onboarding> createState() => _OnboardingState();
+}
+
+class _OnboardingState extends State<Onboarding> {
+   SharedPreferences? sharedPrefs;
+
+     @override
+  void initState() {
+    initializeSharedPrefs();
+    super.initState();
+  }
+
+  initializeSharedPrefs() async {
+    sharedPrefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +36,12 @@ class Onboarding extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(32.0),
                       child: Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
                             onTap: () {
+                               sharedPrefs!.setBool("onboarding", false);
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
@@ -28,7 +49,7 @@ class Onboarding extends StatelessWidget {
                             },
                             child: Text('Skip',
                                 style: TextStyle(
-                                    color: Colors.grey,
+                                    color: Colors.black,
                                     fontSize: 12,
                                     fontWeight: FontWeight.normal))),
                       ),
@@ -38,8 +59,8 @@ class Onboarding extends StatelessWidget {
                     ),
                     Center(
                         child: Image.asset(
-                      'name',
-                      fit: BoxFit.fill,
+                      'assets/images/welcome.png',
+                      fit: BoxFit.cover,
                       height: 300.h,
                     )),
                     SizedBox(

@@ -17,7 +17,7 @@ class AppointmentSuccess extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 10.h,
+                          height: 24.h,
                         ),
                         GestureDetector(
                             onTap: () {
@@ -32,15 +32,16 @@ class AppointmentSuccess extends StatelessWidget {
                               ),
                             )),
                         SizedBox(
-                          height: 60.h,
+                          height: 100.h,
                         ),
                         Center(
                           child: CircleAvatar(
                             backgroundColor: AppColors.color6,
-                            radius: 40,
+                            radius: 50,
                             child: Icon(
                               Icons.done_outlined,
                               color: AppColors.white,
+                              size: 24,
                             ),
                           ),
                         ),

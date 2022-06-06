@@ -49,12 +49,13 @@ class Profile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 16.h,
+                      height: 24.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: SizedBox(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -74,16 +75,17 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 50.w,
-                          ),
+                          // SizedBox(
+                          //   width: 70.w,
+                          // ),
                           Text(
                             'Profile',
                             style: TextStyle(
                                 color: Colors.black,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
-                          const Spacer(),
+                          //  const Spacer(),
                           Icon(
                             Icons.mail_outline_sharp,
                             color: AppColors.color2,
@@ -97,70 +99,73 @@ class Profile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Container(
-                          height: 48,
+                          height: 72,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12)),
-                          child: Row(children: [
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Image.asset(
-                              'name',
-                              height: 48,
-                              width: 48,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Seun Olumide',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  'Nurse',
-                                  style: TextStyle(
-                                      fontSize: 8,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.normal),
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.people_outlined,
-                                      color: AppColors.color2,
-                                      size: 16,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Patients',
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(children: [
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Image.asset(
+                                'assets/images/woman.jpeg',
+                                height: 48,
+                                width: 48,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Seun Olumide',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    'Nurse',
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.people_outlined,
+                                        color: AppColors.color2,
+                                        size: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text('Patients',
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.normal,
+                                              )),
+                                          Text(
+                                            '345+',
                                             style: TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.normal,
-                                            )),
-                                        Text(
-                                          '345+',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.w500),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            )
-                          ])),
+                                                color: Colors.black,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w500),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              )
+                            ]),
+                          )),
                     ),
                     SizedBox(
                       height: 16.h,
@@ -168,6 +173,7 @@ class Profile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Container(
+                        height: 48,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12)),
@@ -284,11 +290,13 @@ class Profile extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16),
                       child: Container(
+                        height: 48,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12)),
                         child: Row(
                           children: [
+                            SizedBox(width: 10.w,),
                             Container(
                               height: 32,
                               width: 32,
@@ -305,6 +313,7 @@ class Profile extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(height: 10.h,),
                                 Text(
                                   'Rating',
                                   style: TextStyle(
@@ -345,7 +354,9 @@ class Profile extends StatelessWidget {
                                   )
                                 ],
                               ),
-                            )
+                            ),    SizedBox(
+                              width: 10.w,
+                            ),
                           ],
                         ),
                       ),

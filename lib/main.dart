@@ -8,24 +8,39 @@ import 'package:lox/ui/payment.dart';
 import 'package:lox/ui/profile.dart';
 import 'package:lox/ui/register.dart';
 import 'package:lox/ui/search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool moveToOnboarding = false;
+  bool moveToHome = true;
+
+  void load() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      moveToHome = prefs.getBool('home') ?? false;
+      moveToOnboarding = (prefs.getBool('onboarding') ?? true);
+    });
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Lox App',
-      
-      // home: const AppointmentSuccess()
-      home: Onboarding(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Lox App',
+
+        // home: const AppointmentSuccess()
+        home: moveToOnboarding ? Login() : Onboarding());
   }
 }
-

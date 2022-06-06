@@ -87,31 +87,36 @@ class _AppointmentPageState extends State<AppointmentPage> {
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                trailing: Container(
-                  height: 24,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      color: AppColors.color2,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.add,
-                          color: AppColors.white,
-                          size: 10,
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Text(
-                          'Add',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.white),
-                        ),
-                      ],
+                trailing: GestureDetector(
+                  onTap: (){
+                    _addObject(context);
+                  },
+                  child: Container(
+                    height: 24,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        color: AppColors.color2,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: AppColors.white,
+                            size: 10,
+                          ),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            'Add',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )),
@@ -137,6 +142,18 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     date: "15",
                     title: "Th",
                   ),
+                      TimePlannerTitle(
+                    date: "16",
+                    title: "Fri",
+                  ),
+                      TimePlannerTitle(
+                    date: "17",
+                    title: "Sat",
+                  ),
+                      TimePlannerTitle(
+                    date: "18",
+                    title: "Sun",
+                  ),
                 ],
                 tasks: tasks,
                 style: TimePlannerStyle(
@@ -146,6 +163,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                 ),
               ),
             ),
+            SizedBox(height: 16.h,),
             Padding(
               padding: const EdgeInsets.only(left: 16.0,top: 8),
               child: Text(
@@ -164,6 +182,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     fontSize: 12),
               ),
             ),
+             SizedBox(height: 10.h,),
             Container(
               child: Column(
                 children: [
@@ -196,7 +215,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             height: 10.h,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
+                            padding: const EdgeInsets.only(left: 16.0,right: 16),
                             child: SizedBox(
                               child: Row(
                                 children: [
@@ -235,11 +254,14 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             ),
                           )
                         ],
-                      ),
-                      Container(
-                        height: 48,
-                        width: 48,
-                        child: Image.asset('name'),
+                      ),Spacer(),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: SizedBox(
+                          height: 48,
+                          width: 48,
+                          child: Image.asset('assets/images/woman.jpeg'),
+                        ),
                       )
                     ],
                   ),
@@ -308,7 +330,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacement(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Payment()));
@@ -329,22 +351,25 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             )),
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.white,
-                              border: Border.all(
-                                  width: 1, color: AppColors.color2)),
-                          height: 32,
-                          width: 150,
-                          child: Center(
-                              child: Text(
-                            'Cancel',
-                            style: TextStyle(
-                              color: AppColors.color2,
-                              fontSize: 12,
-                            ),
-                          )),
+                        GestureDetector(
+                          onTap: ()=>Navigator.pop(context),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                border: Border.all(
+                                    width: 1, color: AppColors.color2)),
+                            height: 32,
+                            width: 150,
+                            child: Center(
+                                child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                color: AppColors.color2,
+                                fontSize: 12,
+                              ),
+                            )),
+                          ),
                         )
                       ],
                     ),
